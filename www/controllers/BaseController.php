@@ -31,14 +31,15 @@ class BaseController{
 
 
     public function insertarDatos(){
-        $nombre = $_POST['nombre'];
-        $edad = intval($_POST['edad']);
-        $sexo = $_POST['sexo'];
-        if ($this->modelo->postBase($nombre,$edad,$sexo))
-            header("Location: /index.php/listar", TRUE, 301);
-        else
-            header("Location: /index.php/agregar", TRUE, 301);
-        
+        if( $_POST['nombre'] && $_POST['edad'] && $_POST['sexo'] ){
+            $nombre = $_POST['nombre'];
+            $edad = intval($_POST['edad']);
+            $sexo = $_POST['sexo'];
+            if ($this->modelo->postBase($nombre,$edad,$sexo))
+                header("Location: /index.php/listar", TRUE, 301);
+            else
+                header("Location: /index.php/agregar", TRUE, 301);
+            }
         exit();
     }
 }
